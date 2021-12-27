@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Martin Gerhardy">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Usage - vengi - voxel engine and its tools</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Usage";
+    var mkdocs_page_input_path = "voxconvert/Usage.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="vengi - voxel engine and its tools - Usage" />
+<meta property="og:description" content="Voxel editor for linux windows and macosx" />
+<meta property="og:url" content="None" />
+<meta property="og:image" content="https://raw.githubusercontent.com/wiki/mgerhardy/engine/images/voxedit-knight.png" />
+<meta property="og:image:type" content="image/png" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@MartinGerhardy" />
+<meta name="twitter:title" content="vengi - voxel engine and its tools - Usage" />
+<meta name="twitter:description" content="Voxel editor for linux windows and macosx" />
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wiki/mgerhardy/engine/images/voxedit-knight.png" />
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> vengi - voxel engine and its tools</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Welcome to vengi</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG/">Changelog</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Basics</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Dependencies/">Dependencies</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Compilation/">Building</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Configuration/">Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Formats/">Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../LUAScript/">Scripting api</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Palette/">Palette</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">VoxConvert</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Index/">About</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Usage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-order-of-execution-is">The order of execution is:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#layers">Layers</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Configuration/">Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Screenshots/">Screenshots</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">VoxEdit</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Index/">About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Features/">Features</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Controls/">Controls</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Configuration/">Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Screenshots/">Screenshots</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Thumbnailer</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../thumbnailer/Index/">About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../thumbnailer/Examples/">Example</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Development</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../VisualTests/">Visual Tests</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ShaderTool/">Shader integration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ComputeShaderTool/">Compute Shader integration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Persistence/">Persistence</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Animations/">Animations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Network/">Network</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../AIRemoteDebugger/">AI development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../openworld/Index/">OpenWorld</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mapview/Index/">MapView</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">vengi - voxel engine and its tools</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>VoxConvert &raquo;</li>
+        
+      
+    
+    <li>Usage</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mgerhardy/engine/edit/master/docs/voxconvert/Usage.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="usage">Usage</h1>
+<p><code>./vengi-voxconvert --merge --scale --input infile --output outfile</code></p>
+<ul>
+<li><code>--export-palette</code>: will save the included palette as png next to the source file. Use in combination with <code>--src-palette</code>.</li>
+<li><code>--filter &lt;filter&gt;</code>: will filter out layers not mentioned in the expression. E.g. <code>1-2,4</code> will handle layer 1, 2 and 4. It is the same as <code>1,2,4</code>. The first layer is <code>0</code>. See the layers note below.</li>
+<li><code>--force</code>: overwrite existing files</li>
+<li><code>--input &lt;file&gt;</code>: allows to specify input files. You can specify more than one file</li>
+<li><code>--merge</code>: will merge a multi layer volume (like <code>vox</code>, <code>qb</code> or <code>qbt</code>) into a single volume of the target file</li>
+<li><code>--mirror &lt;x|y|z&gt;</code>: allows you to mirror the volumes at x, y and z axis</li>
+<li><code>--output &lt;file&gt;</code>: allows you to specify the output filename</li>
+<li><code>--pivot &lt;x:y:z&gt;</code>: change the pivots of the volume layers. Not all voxel formats support this.</li>
+<li><code>--rotate &lt;x|y|z&gt;</code>: allows you to rotate the volumes by 90 degree at x, y and z axis</li>
+<li><code>--scale</code>: perform lod conversion of the input volume (50% scale per call)</li>
+<li><code>--script "&lt;script&gt; &lt;args&gt;"</code>: execute the given script - see <a href="../../LUAScript/">scripting support</a> for more details</li>
+<li><code>--src-palette</code>: will use the included <a href="../../Palette/">palette</a> and doesn't perform any quantization to the default palette</li>
+<li><code>--translate &lt;x:y:z&gt;</code>: translates the volumes by x (right), y (up), z (back)</li>
+</ul>
+<p>Just type <code>vengi-voxconvert</code> to get a full list of commands and options.</p>
+<p>Using a different target palette is also possible by setting the <code>palette</code> <a href="../../Configuration/">cvar</a>.</p>
+<p><code>./vengi-voxconvert -set palette /path/to/palette.png --input infile outfile</code></p>
+<p>The palette file has to be in the dimensions 1x256. It is also possible to just provide the basename of the palette.
+This is e.g. <code>nippon</code>. The tool will then try to look up the file <code>palette-nippon.png</code> in the file search paths.</p>
+<p>You can convert to a different palette with this command. The closest possible color will be chosen for each
+color from the source file palette to the specified palette.</p>
+<h2 id="the-order-of-execution-is">The order of execution is:</h2>
+<ul>
+<li>filter</li>
+<li>merge</li>
+<li>scale</li>
+<li>mirror</li>
+<li>rotate</li>
+<li>translate</li>
+<li>script</li>
+<li>pivot</li>
+</ul>
+<h2 id="layers">Layers</h2>
+<p>Some formats also have layer support. Our layers are maybe not the layers you know from your favorite editor. Each layer can currently only have one object or volume in it. To get the proper layer ids (starting from 0) for your voxel file, you should load it once in <a href="../../voxedit/Index/">voxedit</a> and check the layer panel.</p>
+<p>Especially magicavoxel supports more objects in one layer. This might be confusing to get the right numbers for <code>voxconvert</code>. See <a href="https://github.com/mgerhardy/engine/issues/68">this issue</a> for a few more details.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Configuration/" class="btn btn-neutral float-right" title="Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Index/" class="btn btn-neutral" title="About"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mgerhardy/engine/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Index/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Configuration/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Martin Gerhardy">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Examples - vengi - voxel engine and its tools</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Examples";
+    var mkdocs_page_input_path = "voxconvert/Examples.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="vengi - voxel engine and its tools - Examples" />
+<meta property="og:description" content="Voxel editor for linux windows and macosx" />
+<meta property="og:url" content="None" />
+<meta property="og:image" content="https://raw.githubusercontent.com/wiki/mgerhardy/engine/images/voxedit-knight.png" />
+<meta property="og:image:type" content="image/png" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@MartinGerhardy" />
+<meta name="twitter:title" content="vengi - voxel engine and its tools - Examples" />
+<meta name="twitter:description" content="Voxel editor for linux windows and macosx" />
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wiki/mgerhardy/engine/images/voxedit-knight.png" />
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> vengi - voxel engine and its tools</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Welcome to vengi</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG/">Changelog</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Basics</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Dependencies/">Dependencies</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Compilation/">Building</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Configuration/">Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Formats/">Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../LUAScript/">Scripting api</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Palette/">Palette</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">VoxConvert</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Index/">About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Usage/">Usage</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Configuration/">Configuration</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Examples</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#level-of-detail-lod">Level of detail (LOD)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#merge-several-models">Merge several models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#generate-from-heightmap">Generate from heightmap</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#translate-the-voxels">Translate the voxels</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#execute-lua-script">Execute lua script</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extract-palette-png">Extract palette png</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extract-single-layers">Extract single layers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#convert-to-mesh">Convert to mesh</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#batch-convert">Batch convert</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Screenshots/">Screenshots</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">VoxEdit</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Index/">About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Features/">Features</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Controls/">Controls</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Configuration/">Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../voxedit/Screenshots/">Screenshots</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Thumbnailer</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../thumbnailer/Index/">About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../thumbnailer/Examples/">Example</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Development</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../VisualTests/">Visual Tests</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ShaderTool/">Shader integration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ComputeShaderTool/">Compute Shader integration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Persistence/">Persistence</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Animations/">Animations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Network/">Network</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../AIRemoteDebugger/">AI development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../openworld/Index/">OpenWorld</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mapview/Index/">MapView</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">vengi - voxel engine and its tools</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>VoxConvert &raquo;</li>
+        
+      
+    
+    <li>Examples</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mgerhardy/engine/edit/master/docs/voxconvert/Examples.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="examples">Examples</h1>
+<h2 id="level-of-detail-lod">Level of detail (LOD)</h2>
+<p>Generate a lod scaled by 50% from the input model.</p>
+<p><code>./vengi-voxconvert -s --input infile.vox output.vox</code></p>
+<h2 id="merge-several-models">Merge several models</h2>
+<p>Merge several models into one:</p>
+<p><code>./vengi-voxconvert --input one.vox --input two.vox --output onetwo.vox</code></p>
+<h2 id="generate-from-heightmap">Generate from heightmap</h2>
+<p>Just specify the heightmap as input file like this:</p>
+<p><code>./vengi-voxconvert --input heightmap.png --output outfile.vox</code></p>
+<h2 id="translate-the-voxels">Translate the voxels</h2>
+<p>You can translate the voxels in the world like this:</p>
+<p><code>./vengi-voxconvert --translate 0:10:0 --input heightmap.png --output outfile.vox</code></p>
+<p>This would move the voxels 10 units upwards. But keep in mind that not every format supports
+to store a translation offset.</p>
+<h2 id="execute-lua-script">Execute lua script</h2>
+<p>Use the <code>--script</code> parameter:</p>
+<p><code>./vengi-voxconvert --script "cover 2" --input infile.vox --output outfile.vox</code></p>
+<p>This is executing the script in <code>./scripts/cover.lua</code> with a parameter of <code>2</code>.</p>
+<p><code>./vengi-voxconvert --script "./scripts/cover.lua 2" --input infile.vox --output outfile.vox</code></p>
+<p>This is doing exactly the same as above - just with a full path.</p>
+<p>See the <a href="../../LUAScript/">scripting</a> documentation for further details.</p>
+<h2 id="extract-palette-png">Extract palette png</h2>
+<p>Saves the png in the same dir as the vox file:</p>
+<p><code>./vengi-voxconvert --src-palette --export-palette --input infile.vox --output outfile.vox</code></p>
+<p>There will be an <code>infile.png</code> now.</p>
+<h2 id="extract-single-layers">Extract single layers</h2>
+<p>Extract just a few layers from the input file.</p>
+<p><code>./vengi-voxconvert --filter 1-2,4 --input infile.vox --output outfile.vox</code></p>
+<p>This will export layers 1, 2 and 4.</p>
+<h2 id="convert-to-mesh">Convert to mesh</h2>
+<p>You can export your volume model into a obj or ply.</p>
+<p><code>./vengi-voxconvert --input infile.vox --output outfile.obj</code></p>
+<h2 id="batch-convert">Batch convert</h2>
+<p>To convert a complete directory of e.g. <code>*.vox</code> to <code>*.obj</code> files, you can use e.g. the bash like this:</p>
+<pre><code class="bash">for i in *.vox; do vengi-voxconvert --input $i --output ${i%.vox}.obj; done
+</code></pre>
+
+<p>An example for the windows powershell to extract single layers into a new model</p>
+<pre><code class="ps">$array = &quot;1-2,5&quot;, &quot;1-2,7&quot;
+foreach ($i in $array){
+  ./vengi-voxconvert --filter $i --input input.vox --output output_$i.vxm
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Screenshots/" class="btn btn-neutral float-right" title="Screenshots">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Configuration/" class="btn btn-neutral" title="Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mgerhardy/engine/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Configuration/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Screenshots/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

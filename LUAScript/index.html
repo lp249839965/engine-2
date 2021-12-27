@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Martin Gerhardy">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Scripting api - vengi - voxel engine and its tools</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Scripting api";
+    var mkdocs_page_input_path = "LUAScript.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="vengi - voxel engine and its tools - Scripting api" />
+<meta property="og:description" content="Voxel editor for linux windows and macosx" />
+<meta property="og:url" content="None" />
+<meta property="og:image" content="https://raw.githubusercontent.com/wiki/mgerhardy/engine/images/voxedit-knight.png" />
+<meta property="og:image:type" content="image/png" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@MartinGerhardy" />
+<meta name="twitter:title" content="vengi - voxel engine and its tools - Scripting api" />
+<meta name="twitter:description" content="Voxel editor for linux windows and macosx" />
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wiki/mgerhardy/engine/images/voxedit-knight.png" />
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> vengi - voxel engine and its tools</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome to vengi</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG/">Changelog</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Basics</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Dependencies/">Dependencies</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Compilation/">Building</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Configuration/">Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Formats/">Formats</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Scripting api</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arguments">Arguments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#layermanager-voxedit">LayerManager (voxedit)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#layer-voxedit">Layer (voxedit)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#color">Color</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#noise">Noise</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#region">Region</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#volume">Volume</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vectors">Vectors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other">Other</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#available-scripts">Available scripts</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Palette/">Palette</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">VoxConvert</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxconvert/Index/">About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxconvert/Usage/">Usage</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxconvert/Configuration/">Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxconvert/Examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxconvert/Screenshots/">Screenshots</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">VoxEdit</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxedit/Index/">About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxedit/Features/">Features</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxedit/Controls/">Controls</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxedit/Configuration/">Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../voxedit/Screenshots/">Screenshots</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Thumbnailer</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../thumbnailer/Index/">About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../thumbnailer/Examples/">Example</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Development</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../VisualTests/">Visual Tests</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ShaderTool/">Shader integration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ComputeShaderTool/">Compute Shader integration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Persistence/">Persistence</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Animations/">Animations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Network/">Network</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../AIRemoteDebugger/">AI development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../openworld/Index/">OpenWorld</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../mapview/Index/">MapView</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">vengi - voxel engine and its tools</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Basics &raquo;</li>
+        
+      
+    
+    <li>Scripting api</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mgerhardy/engine/edit/master/docs/LUAScript.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="scripting-api">Scripting api</h1>
+<p>There is a console command (called <code>xs</code>) in <a href="../voxedit/Index/">voxedit</a> and a command line parameter in <a href="../voxconvert/Index/">voxconvert</a> to execute lua scripts for generating voxels. This command expects the lua script filename (<code>.lua</code> can be omitted) and the additional arguments for the <code>main()</code> method.</p>
+<hr />
+<blockquote>
+<p><strong>voxedit</strong></p>
+<p>Calling <code>xs &lt;script&gt; help</code> (in the script console) will print the supported arguments for the given script file in voxedit.</p>
+</blockquote>
+<hr />
+<blockquote>
+<p><strong>voxconvert</strong></p>
+<p><code>./vengi-voxconvert --script "&lt;script&gt; help" --input in.qb --output out.qb</code></p>
+</blockquote>
+<hr />
+<p>By default the script files will be searched in a <code>scripts</code> folder next to where the binary is located and in the usual search paths (see <a href="../Configuration/">configuration</a> for more details). You can also give the full path to the script file.</p>
+<p>There are two functions in each script. One is called <code>arguments</code> and one <code>main</code>. <code>arguments</code> returns a list of parameters for the <code>main</code> function. The default parameters for <code>main</code> are <code>volume</code>, <code>region</code> and <code>color</code>. <code>color</code> is the palette index starting from <code>0</code>.</p>
+<p>Those functionalities that are marked with <code>voxedit</code> are not available outside of the editor (e.g. for the command line tools like <a href="../voxconvert/Index/">voxconvert</a>).</p>
+<h2 id="examples">Examples</h2>
+<h3>Without parameters</h3>
+<pre><code class="lua">function main(volume, region, color)
+    local mins = region:mins()
+    local maxs = region:maxs()
+    for x = mins.x, maxs.x do
+        for y = mins.y, maxs.y do
+            for z = mins.z, maxs.z do
+                volume:setVoxel(x, y, z, color)
+            end
+        end
+    end
+end
+</code></pre>
+
+<p>Execute this via console <code>xs scriptfile</code></p>
+<h3>With one parameter</h3>
+<pre><code class="lua">function arguments()
+    return {
+        { name = 'n', desc = 'height level delta', type = 'int', default = '2' }
+    }
+end
+
+function main(volume, region, color, n)
+    [...]
+end
+</code></pre>
+
+<p>Execute this via console <code>xs scriptfile 1</code> where <code>1</code> will be the value of <code>n</code>. Omitting the <code>1</code> will add the <code>default</code> value from the argument list.</p>
+<h2 id="arguments">Arguments</h2>
+<p>Supported <code>type</code>s are:</p>
+<ul>
+<li><code>int</code>: <code>min</code>, <code>max</code> values are supported, too</li>
+<li><code>float</code>: <code>min</code>, <code>max</code> values are supported, too</li>
+<li><code>enum</code>: <code>enum</code> as a property specifies a list of string separated by <code>,</code></li>
+<li><code>str</code>: string input</li>
+<li><code>colorindex</code>: a color index from current palette (clamped)</li>
+<li><code>bool</code>:</li>
+</ul>
+<p>The <code>desc</code>ription field is just for the user interface of the script parameter list.</p>
+<p>A <code>default</code> value can get set, too.</p>
+<p>The order in the arguments table defines the order in which the arguments are passed over to the script.</p>
+<h2 id="layermanager-voxedit">LayerManager (voxedit)</h2>
+<p><code>layerMgr</code> lets you access different layers or create new ones.</p>
+<p>The functions are:</p>
+<ul>
+<li>
+<p><code>new(name, visible, region)</code>: Creates a new layer with the given <code>name</code>, the <code>visible</code> boolean, and the given size and position according to the <code>region</code>.</p>
+</li>
+<li>
+<p><code>get([layerId])</code>: Returns the <code>layer</code> for the given <code>layerId</code> - if the <code>layerId</code> is not given, it will return the current active layer. Which by default is the layer for the volume the script is currently executed for.</p>
+</li>
+</ul>
+<h2 id="layer-voxedit">Layer (voxedit)</h2>
+<ul>
+<li>
+<p><code>name()</code>: Returns the current name of the layer.</p>
+</li>
+<li>
+<p><code>setName(string)</code>: Set the name of the layer.
+*</p>
+</li>
+<li><code>volume()</code>: Gives you access to the volume of the layer.</li>
+</ul>
+<h2 id="color">Color</h2>
+<p><code>palette</code> has several methods to work with colors. E.g. to find a closest possible match for the given palette index.</p>
+<p>The functions are:</p>
+<ul>
+<li>
+<p><code>color(paletteIndex)</code>: Pushes the vec4 of the color behind the palette index (<code>0-255</code>) as float values between <code>0.0</code> and <code>1.0</code>.</p>
+</li>
+<li>
+<p><code>colors()</code>: Returns the palette RGBA colors as vec4 values.</p>
+</li>
+<li>
+<p><code>match(r, g, b)</code>: Returns the closest possible palette color match for the given RGB (<code>0-255</code>) color. The returned palette index is in the range <code>0-255</code>. This value can then be used for the <code>setVoxel</code> method.</p>
+</li>
+<li>
+<p><code>similar(paletteindex, [coloramount])</code>: Return a table with similar colors given by their palette index.</p>
+</li>
+</ul>
+<h2 id="noise">Noise</h2>
+<p><code>noise</code> supports a few noise generators:</p>
+<ul>
+<li>
+<p><code>noise2(v)</code>, <code>noise3(v)</code>, <code>noise4(v)</code>: Simplex noise. Uses the given <code>vec2</code>, <code>vec3</code> or <code>vec4</code> and returns a float value between <code>0.0</code> and <code>1.0</code>.</p>
+</li>
+<li>
+<p><code>fBm2(v)</code>, <code>fBm3(v)</code>, <code>fBm4(v)</code>: Simplex noise fractal brownian motion sum. Uses the given <code>vec2</code>, <code>vec3</code> or <code>vec4</code> and returns a float value between <code>0.0</code> and <code>1.0</code>.</p>
+</li>
+<li>
+<p><code>ridgedMF2(v)</code>, <code>ridgedMF3(v)</code>, <code>ridgedMF4(v)</code>: Simplex ridged multi-fractal noise sum. Uses the given <code>vec2</code>, <code>vec3</code> or <code>vec4</code> and returns a float value between <code>0.0</code> and <code>1.0</code>.</p>
+</li>
+<li>
+<p><code>worley2(v)</code>, <code>worley3(v)</code>: Simplex cellular/worley noise. Uses the given <code>vec2</code> or <code>vec3</code> and returns a float value between <code>0.0</code> and <code>1.0</code>.</p>
+</li>
+</ul>
+<h2 id="region">Region</h2>
+<ul>
+<li>
+<p><code>mins()</code>: The lower boundary of the region (inclusive).</p>
+</li>
+<li>
+<p><code>maxs()</code>: The upper boundary of the region (inclusive).</p>
+</li>
+<li>
+<p><code>setMins(mins)</code>: The lower boundary of the region - given as <code>ivec3</code>.</p>
+</li>
+<li>
+<p><code>setMaxs(maxs)</code>: The upper boundary of the region - given as <code>ivec3</code>.</p>
+</li>
+<li>
+<p><code>x()</code>: The lower x boundary of the region.</p>
+</li>
+<li>
+<p><code>y()</code>: The lower y boundary of the region.</p>
+</li>
+<li>
+<p><code>z()</code>: The lower z bounary of the region.</p>
+</li>
+<li>
+<p><code>width()</code>: The width of the region measured in voxels.</p>
+</li>
+<li>
+<p><code>height()</code>: The height of the region measured in voxels.</p>
+</li>
+<li>
+<p><code>depth()</code>: The depth of the region measured in voxels.</p>
+</li>
+</ul>
+<h2 id="volume">Volume</h2>
+<ul>
+<li>
+<p><code>voxel(x, y, z)</code>: Returns the palette index of the voxel at the given position in the volume <code>[0-255]</code>. Or <code>-1</code> if there is no voxel.</p>
+</li>
+<li>
+<p><code>region()</code>: Return the region of the volume.</p>
+</li>
+<li>
+<p><code>translate(x, [y, z])</code>: Translates the region of the volume. Keep in mind that this is not supported by every output format.</p>
+</li>
+<li>
+<p><code>setVoxel(x, y, z, color)</code>: Set the given color at the given coordinates in the volume. <code>color</code> must be in the range <code>[0-255]</code>.</p>
+</li>
+</ul>
+<h2 id="vectors">Vectors</h2>
+<p>Available vector types are <code>vec2</code>, <code>vec3</code>, <code>vec4</code> and their integer types <code>ivec2</code>, <code>ivec3</code>, <code>ivec4</code>.</p>
+<pre><code class="lua">local v1 = ivec3.new(1, 1, 1)
+</code></pre>
+
+<p>There are 3 possible components for this vector. You can also call <code>ivec3.new(1)</code> to fill all three values with a one. Or call it like this: <code>ivec3.new(1, 2)</code> to create a vector with the three components of <code>1, 2, 2</code>.</p>
+<h2 id="other">Other</h2>
+<ul>
+<li><code>y</code> going upwards.</li>
+</ul>
+<p>You have access to the <code>cvar</code> and <code>cmd</code> lua bindings, too. This means that you can access any <code>cvar</code> value or execute any command like <code>layeradd</code> or <code>layermerge</code> to modify the whole scene.</p>
+<pre><code class="lua">cmd.execute(&quot;echo test&quot;)
+var.int(&quot;cl_gamma&quot;)
+</code></pre>
+
+<p>To get a full list of commands and cvars use the console command <code>cmdlist</code> and <code>cvarlist</code>.</p>
+<h2 id="available-scripts">Available scripts</h2>
+<h3>noise.lua</h3>
+<p>Generates perlin noise with the frequency and amplitude as parameters with the current selected color.</p>
+<p><img alt="noise" src="../img/lua-noise.png" /></p>
+<p><code>xs noise.lua 0.3 1.0</code></p>
+<h3>cover.lua</h3>
+<p>Generates a new voxel on top of others with the current selected color and the specified height.</p>
+<p><img alt="cover" src="../img/lua-cover.png" /></p>
+<p><code>xs cover.lua 1</code></p>
+<h3>pyramid.lua</h3>
+<p>Generates a pyramid with the current selected color and with each level being 3 voxels high.</p>
+<p><img alt="pyramid" src="../img/lua-pyramid.png" /></p>
+<p><code>xs pyramid.lua 3</code></p>
+<h3>thicken.lua (voxedit)</h3>
+<p>Thickens the voxel - take 1 voxel and convert to 8 voxels (creates a new layer for the result).</p>
+<p><img alt="thickenbefore" src="../img/lua-thicken-before.png" /> <img alt="thickenafter" src="../img/lua-thicken-after.png" /></p>
+<p><code>xs thicken.lua 1</code></p>
+<h3>grass.lua</h3>
+<p>Generate grass on top of voxels.</p>
+<p><img alt="grass" src="../img/grass.png" /></p>
+<p><code>xs grass.lua</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Palette/" class="btn btn-neutral float-right" title="Palette">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Formats/" class="btn btn-neutral" title="Formats"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mgerhardy/engine/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Formats/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Palette/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
